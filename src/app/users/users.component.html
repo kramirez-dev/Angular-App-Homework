@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div class="center">
+    <h1>List of Users</h1>
+    <table class="mat-elevation-z8">
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *ngFor="let users of _user"> {{users.first_name}}</th>
+        </ng-container>
+        <tr>
+            <td *ngFor="let users of _user" style="text-align: center;">
+                <img [src]="users.avatar" alt="">
+                <button mat-stroked-button (click)="getUserById(users.id)">Show Details</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="center" *ngIf="checkUserlist">
+        <table class="mat-elevation-z8">
+            <ng-container matColumnDef="position">
+                <th mat-header-cell>id</th>
+                <th mat-header-cell>Avatar</th>
+                <th mat-header-cell>Fist name</th>
+                <th mat-header-cell>Last Name</th>
+                <th mat-header-cell>Email</th>
+            </ng-container>
+            <tr>
+                <td> {{userlist.id}} </td>
+                <td> <img [src]="userlist.avatar" alt=""> </td>
+                <td> {{userlist.first_name}} </td>
+                <td> {{userlist.last_name}} </td>
+                <td>{{userlist.email}} </td>
+            </tr>
+        </table>
+</div>
+
+<div class="center">
+    <button mat-raised-button type="submit" (click)="nextPage()">Previous Page</button>
+    <button mat-raised-button type="submit" (click)="nextPage(1)" class="pad">Next Page</button>
+</div>

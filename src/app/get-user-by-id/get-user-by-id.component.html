@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<div class="center center2">
+  <mat-card>
+    <mat-card-title class="tittles">Find a User</mat-card-title>
+    <mat-card-content>
+
+      <form class="login-form">
+        <mat-form-field class="login-full-width">
+          <mat-label>ID</mat-label>
+          <input type="number" name="id" matInput [(ngModel)]="index" placeholder="Any ID">
+        </mat-form-field>
+        <button (click)="getUserByID(index)" mat-raised-button type="submit">Show</button>
+        <button (click)="getFalseList()" mat-raised-button>Hide</button>
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+<div class="center" *ngIf="checkUser">
+  <table class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell>ID</th>
+      <th mat-header-cell>Avatar</th>
+      <th mat-header-cell>Fist name</th>
+      <th mat-header-cell>Last Name</th>
+      <th mat-header-cell>Email</th>
+    </ng-container>
+    <tr>
+      <td> {{_user.id}} </td>
+      <td> <img [src]="_user.avatar" alt=""> </td>
+      <td> {{_user.first_name}} </td>
+      <td> {{_user.last_name}} </td>
+      <td>{{_user.email}} </td>
+    </tr>
+  </table>
+</div>
+<div class="center" *ngIf="notExist">
+  <h1 class="wrong">ID doesn't exist</h1>
+</div>

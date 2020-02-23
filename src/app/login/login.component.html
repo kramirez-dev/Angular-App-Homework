@@ -1,0 +1,23 @@
+<div class="center">
+  <mat-card>
+    <img mat-card-md-image src="https://www.lboro.ac.uk/media/wwwlboroacuk/external/content/services/itservices/ittoolkit/72287%20IT%20Services%20Website%20Icons%20AW-2.png">
+    <mat-card-title class="tittles">Sign in</mat-card-title>
+    <mat-card-content>
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="login-full-width">
+        <mat-label>Email</mat-label>
+        <input id="email" type="email" formControlName="email" matInput placeholder="Your reqres.in Email">
+      </mat-form-field>
+      <mat-form-field class="login-full-width">
+        <mat-label>Password</mat-label>
+        <input id="password" type="password" formControlName="password" matInput placeholder="Your reqres.in Password">
+      </mat-form-field>
+      <button mat-raised-button type="submit">Login</button>
+    </form>
+  </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="center" *ngIf="notExist">
+  <h1 class="wrong">Invalid Credentials</h1>
+</div>

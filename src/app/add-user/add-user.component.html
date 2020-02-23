@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+  <div class="center center2">
+  <mat-card>
+    <mat-card-title class="tittles">Sign Up</mat-card-title>
+    <mat-card-content>
+      <form class="login-form" action="#!" [formGroup]="loginForm" (ngSubmit)="registerUser()">
+        <mat-form-field class="login-full-width">
+          <mat-label>Name</mat-label>
+          <input id="name" type="text" formControlName="name" matInput placeholder="Name">
+        </mat-form-field>
+        <mat-form-field class="login-full-width">
+          <mat-label>Job</mat-label>
+          <input id="job" type="text"  formControlName="job" matInput placeholder="Job">
+        </mat-form-field>
+        <button mat-raised-button type="submit">Register</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="center" [hidden]="checkUserRegister">
+  <h1>User Registered Successfully</h1>
+  <table class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell>ID</th>
+      <th mat-header-cell>Fist name</th>
+      <th mat-header-cell>Last Name</th>
+      <th mat-header-cell>Email</th>
+    </ng-container>
+    <tr>
+      <td> {{_userRegister.id}} </td>
+      <td>  {{_userRegister.name}} </td>
+      <td>  {{_userRegister.job}} </td>
+      <td> {{_userRegister.createdAt}} </td>
+    </tr>
+  </table>
+</div>
+
+<div class="center" *ngIf="incompleteFields">
+  <h1 class="wrong">Please fill the fields Correctly</h1>
+</div>
